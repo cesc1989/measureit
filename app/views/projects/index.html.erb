@@ -3,5 +3,5 @@
 <%= link_to 'Nuevo proyecto', new_project_path %>
 
 <% @projects.each do |project| %>
-	<p><%= project.name %> - <%= link_to 'Nueva tarea', new_project_task_path(project) %></p>
+	<p><%= link_to project.name, project %> - <%= link_to 'Nueva tarea', new_project_task_path(project) %></p>
 <% end %>

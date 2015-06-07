@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-	before_action :load_project
+	before_filter :load_project, only: [:show, :new, :create]
 
 	def index
 		@tasks = Task.all
@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 
 	def create
 		@task = @project.tasks.create(task_params)
+		@task.start_time = DateTime.now
 
 		respond_to do |format|
 			if @task.save
@@ -23,7 +24,8 @@ class TasksController < ApplicationController
 	end
 
 	def show
-		
+		#puts "Veamos que sale de aqui"
+		#puts @project_tasks.description
 	end
 
 	private

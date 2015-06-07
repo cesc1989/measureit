@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		
+		@project_tasks = Task.where(project_id: @project.id)
 	end
 
 	private
