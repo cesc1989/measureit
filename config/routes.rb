@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 	end
 
 	root 'tasks#index'
+
+	get 't', to: 'tasks#tareas'
+
+	match '/projects/:project_id/tasks/create', to: 'tasks#create', via: :post
 end

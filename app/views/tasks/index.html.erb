@@ -1,7 +1,13 @@
-<h1>Hola tareas</h1>
+<h1>Todas las Tareas</h1>
 
-<%= link_to 'Los proyectos', projects_path %>
+<div id="timerForm">
+	<label for="timerInput">Tarea</label>
+	<input id="timerInput" type="text">
+	<button id="startTimer">Iniciar</button>
+</div>
 
 <% @tasks.each do |task| %>
-	<p><%= task.description %></p>
+	<p><%= task.description %> - <%= task.start_time %></p>
 <% end %>
+
+<%= link_to 'Ver todos los proyectos', projects_path %>

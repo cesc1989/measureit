@@ -1,9 +1,14 @@
 class TasksController < ApplicationController
 
-	before_filter :load_project, only: [:show, :new, :create]
+	before_filter :load_project, only: [:show, :new]
 
 	def index
 		@tasks = Task.all
+	end
+
+	def tareas
+		@tasks = Task.all
+		render json: @tasks
 	end
 
 	def new
@@ -11,21 +16,18 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		@task = @project.tasks.create(task_params)
+		@task = Task.new
+		@task = Task.create(task_params)
 		@task.start_time = DateTime.now
 
-		respond_to do |format|
-			if @task.save
-				format.html {redirect_to project_path(@project)}
-			else
-				format.html {render 'new'}
-			end
+		if @task.save
+			render json: @task
 		end
+		
 	end
 
 	def show
-		#puts "Veamos que sale de aqui"
-		#puts @project_tasks.description
+		
 	end
 
 	private
@@ -35,7 +37,7 @@ class TasksController < ApplicationController
 		end
 
 		def task_params
-			params.require(:task).permit(:description)
+			params.require(:task).permit(:description, :project_id)
 		end
 
 end
