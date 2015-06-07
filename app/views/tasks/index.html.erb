@@ -1,0 +1,7 @@
+<h1>Hola tareas</h1>
+
+<%= link_to 'Los proyectos', projects_path %>
+
+<% @tasks.each do |task| %>
+	<p><%= task.description %></p>
+<% end %>
