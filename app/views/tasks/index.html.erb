@@ -8,7 +8,7 @@
 </div>
 
 <% @tasks.each do |task| %>
-	<p><%= task.description %> - <%= task.start_time %></p>
+	<p><%= task.description %></p>
 <% end %>
 
 <%= link_to 'Ver todos los proyectos', projects_path %>

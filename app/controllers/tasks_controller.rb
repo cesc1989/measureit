@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 	before_filter :load_project, only: [:show, :new]
 
 	def index
-		@tasks = Task.all
+		@tasks = Task.order(created_at: :desc)
 	end
 
 	def tareas
@@ -20,7 +20,8 @@ class TasksController < ApplicationController
 		@task = Task.create(task_params)
 
 		if @task.save
-			render json: @task
+			render json: {'completed' => @task.as_json}
+			#puts @task.to_a
 		end
 	end
 
