@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 	get 't', to: 'tasks#tareas'
 
 	match '/start', to: 'tasks#create', via: :post
+
+	match '/stop', to: 'task_times#save_task_time', via: :post
 end

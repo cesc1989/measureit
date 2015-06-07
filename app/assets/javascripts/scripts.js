@@ -3,9 +3,16 @@ $(document).ready(function(){
 	//$("#stopTimer").hide();
 
 	var taskId;
-	var fulltime;
+	var startTime;
+	var stopTime;
+
+	var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
 
 	$("#startTimer").click(function(){
+
+        setInterval(setTime, 1000);
 
 		var createTaskUrl = "/start";
 		var taskDescription;
@@ -23,7 +30,7 @@ $(document).ready(function(){
 			}	
 		}
 
-		fulltime = getTime();
+		startTime = getTime();
 
 		//console.log(data);
 		//console.log(fulltime);
@@ -44,6 +51,37 @@ $(document).ready(function(){
 
 		});
 
+	});
+
+	$("#stopTimer").click(function(){
+		var taskTimeUrl = "/stop";
+
+		stopTime = getTime();
+
+		var saveData = {
+			'task_time':{
+				'start_time': startTime,
+				'end_time': stopTime,
+				'task_id': taskId
+			}
+		}
+
+		console.log(saveData);
+
+		$.ajax({
+			type: "POST",
+			url: taskTimeUrl,
+			data: saveData,
+			dataType: "JSON",
+			success: function(data){
+				console.log("Listo el pollo");
+				console.log(data);
+			},
+			error: function(jqXHR, textStatus, errorMessage){
+				console.log("Hubo errores en el proceso: "+errorMessage);
+			}
+
+		});
 
 	});
 
@@ -68,5 +106,21 @@ $(document).ready(function(){
 
 		return time;
 	};
+
+	function setTime(){
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
+
+    function pad(val){
+        var valString = val + "";
+        
+        if(valString.length < 2){
+            return "0" + valString;
+        }else{
+            return valString;
+        }
+    }
 
 });

@@ -21,7 +21,6 @@ class TasksController < ApplicationController
 
 		if @task.save
 			render json: {'completed' => @task.as_json}
-			#puts @task.to_a
 		end
 	end
 
