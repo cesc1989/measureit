@@ -1,15 +1,17 @@
 $(document).ready(function(){
 	console.log("jQuery listo para arrancar!");
 
+	//$("#stopTimer").hide();
+
 	$("#startTimer").click(function(){
 
-		var createTaskUrl = "/projects/5/tasks/create";
+		var createTaskUrl = "/start";
 		//var createTaskUrl = "/t";
 		console.log(createTaskUrl);
 		var data = {
 			'task':{
 				'description': $("#timerInput").val(),
-			'project_id': 5	
+				'project_id': 1	
 			}
 			
 		}

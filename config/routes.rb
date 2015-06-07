@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
 	get 't', to: 'tasks#tareas'
 
-	match '/projects/:project_id/tasks/create', to: 'tasks#create', via: :post
+	match '/start', to: 'tasks#create', via: :post
 end

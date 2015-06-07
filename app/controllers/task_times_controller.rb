@@ -1,0 +1,2 @@
+class TaskTimesController < ApplicationController
+end

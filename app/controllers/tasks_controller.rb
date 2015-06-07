@@ -18,12 +18,10 @@ class TasksController < ApplicationController
 	def create
 		@task = Task.new
 		@task = Task.create(task_params)
-		@task.start_time = DateTime.now
 
 		if @task.save
 			render json: @task
 		end
-		
 	end
 
 	def show
