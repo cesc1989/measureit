@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
 
   def self.task_with_times
   	customquery = "SELECT tasks.id, description,
-  				          TIMESTAMPDIFF(SECOND, start_time, end_time) as timediff
+  				          TIMEDIFF(end_time, start_time) as timediff
   				   FROM tasks
   				   INNER JOIN task_times
   				   ON tasks.id = task_times.task_id

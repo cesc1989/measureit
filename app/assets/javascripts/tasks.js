@@ -26,7 +26,7 @@ $(document).ready(function(){
 			taskTimes = data[key].timediff;
 			taskId = data[key].id;
 
-			//taskTimes = moment(taskTimes).format("mm:ss");
+			taskTimes = moment(taskTimes).format("mm:ss");
 
 			html += "<p>"+taskDescription;
 			html +=" - <span id=h-"+taskId+"><i>"+taskTimes+"</i></span>";
