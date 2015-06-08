@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 
+	before_action :authenticate_user!, only: [:index, :create, :tareas]
 	before_filter :load_project, only: [:show, :new]
 
 	def index

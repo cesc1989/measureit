@@ -9,8 +9,8 @@ gem 'rails', '4.1.6'
 gem 'mysql2', '~> 0.3.17'
 
 gem 'devise'
-#gem 'omniauth'
-#gem 'omniauth-twitter'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
