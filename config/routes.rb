@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 	match '/start', to: 'tasks#create', via: :post
 
 	match '/stop', to: 'task_times#save_task_time', via: :post
+
+	match '/diff', to: 'task_times#calculate_diff', via: :get
+
 end

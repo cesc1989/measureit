@@ -3,11 +3,11 @@ class TasksController < ApplicationController
 	before_filter :load_project, only: [:show, :new]
 
 	def index
-		@tasks = Task.order(created_at: :desc)
+		#@tasks = Task.order(created_at: :desc)
 	end
 
 	def tareas
-		@tasks = Task.all
+		@tasks = Task.task_with_times
 		render json: @tasks
 	end
 

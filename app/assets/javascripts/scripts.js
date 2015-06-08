@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	//$("#stopTimer").hide();
+	$("#stopTimer").hide();
 
 	var taskId;
 	var startTime;
@@ -42,16 +42,17 @@ $(document).ready(function(){
 			data: data,
 			dataType: "JSON",
 			success: function(data){
-				console.log("Listo el pollo");
-				//console.log("Información de la tarea:");
+				console.log("Start el pollo");
 				//console.log(data);
 				getTaskId(data);
 			},
 			error: function(jqXHR, textStatus, errorMessage){
 				console.log("Hubo errores en el proceso: "+errorMessage);
 			}
-
 		});
+
+		$(this).hide();
+		$("#stopTimer").show();
 
 	});
 
@@ -68,15 +69,13 @@ $(document).ready(function(){
 			}
 		}
 
-		console.log(saveData);
-
 		$.ajax({
 			type: "POST",
 			url: taskTimeUrl,
 			data: saveData,
 			dataType: "JSON",
 			success: function(data){
-				console.log("Listo el pollo");
+				console.log("Stop el pollo");
 				//console.log(data);
 				drawTask(keepTaskDescription);
 				getElapsedTime(data);
@@ -87,33 +86,35 @@ $(document).ready(function(){
 		});
 
 		stopTimer();
+		$(this).hide();
+		$("#startTimer").show();
 
 	});
 
-	var getElapsedTime = function(data){
-		var st, et, tt;
+	function getElapsedTime(data){
+		var st, et, tt, ti;
 		for (key in data){
 			st = data[key].start_time;
 			et = data[key].end_time;
+			ti = data[key].task_id;
 		}
 
-		/*st = new Date(st).toString();
-		et = new Date(et).toString();*/
+		et = moment(et).format("YYYY-MM-DD HH:mm:ss");
+		st = moment(st).format("YYYY-MM-DD HH:mm:ss");
 
-		/*st = st.split("T").join(" ");
-		st = st.split(".000Z").join("");
+		tt = moment(et).diff(st);
 
-		et = et.split("T").join(" ");
-		et = et.split(".000Z").join("");*/
+		tt = moment(tt).format("mm:ss");
 
-		console.log(st+" "+et);
+		//console.log(st+" "+et+" Task id: "+ti);
+		//console.log(tt);
+		//console.log("#h-"+ti+" i");
 
-		tt = new Date(et.getTime() - st.getTime());
-		console.log(tt);
+		$("#h-"+ti+" i").html("<i>"+tt+"</i>");
 	}
 
-	function drawTask(data){
-		$(".tasksList").prepend("<p>"+data+"</p>");
+	function drawTask(td){
+		$("#tasksList").prepend("<p>"+td+" - <span id=h-"+taskId+"><i></i></span></p>");
 	}
 
 	function getTaskId(data){
@@ -121,7 +122,31 @@ $(document).ready(function(){
 			taskId = data[key].id;
 			keepTaskDescription = data[key].description;
 		}
-	};
+	}
+
+	function allElapsedTime(){
+		/*var obtainDiff = {
+			'task_time':{
+				'task_id': taskId
+			}
+		}
+
+		var timeDiff;
+
+		$.ajax({
+			url: '/diff',
+			data: obtainDiff,
+			type: "GET",
+			dataType: "JSON",
+			success: function(data){
+				console.log("Trajo la diferencia");
+				console.log(data);
+			},
+			error: function(jqXHR, textStatus, errorMessage){
+				console.log("Hubo errores en el proceso: "+errorMessage);	
+			}
+		});*/
+	}
 
 	var getTime = function(){
 		var currentDate = new Date();

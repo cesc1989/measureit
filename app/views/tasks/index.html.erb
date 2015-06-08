@@ -8,10 +8,7 @@
 	<button id="stopTimer">Detener</button>
 </div>
 
-<div class="tasksList">
-	<% @tasks.each do |task| %>
-		<p><%= task.description %> - <span class="elapsedTime"></span></p>
-	<% end %>
+<div id="tasksList">
 </div>
 
 <%= link_to 'Ver todos los proyectos', projects_path %>
