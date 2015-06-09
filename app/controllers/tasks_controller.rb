@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 	end
 
 	def tareas
-		@tasks = Task.task_with_times
+		@tasks = Task.task_with_times(current_user.id)
 		render json: @tasks
 	end
 

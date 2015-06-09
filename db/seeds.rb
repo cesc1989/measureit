@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-default_project = Project.create(name: 'no_project')
+#default_project = Project.create(name: 'no_project')
