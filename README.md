@@ -1,3 +1,3 @@
-== Measure It
+#Measure It
 
-With measure it
+Lleva el registro de tiempo de tus actividades.
