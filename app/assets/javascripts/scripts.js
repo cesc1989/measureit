@@ -27,7 +27,11 @@ $(document).ready(function(){
 			taskDescription = $("#timerInput").val();
 		}
 
-		projectForTask = $("select option:selected").val();
+		if ($("select option:selected").val() == "no"){
+			createNoProject("no_project");
+		}else{
+			projectForTask = $("select option:selected").val();
+		}
 
 		console.log(projectForTask);
 
@@ -105,14 +109,8 @@ $(document).ready(function(){
 
 		et = moment(et).format("YYYY-MM-DD HH:mm:ss");
 		st = moment(st).format("YYYY-MM-DD HH:mm:ss");
-
 		tt = moment(et).diff(st);
-
 		tt = moment(tt).format("mm:ss");
-
-		//console.log(st+" "+et+" Task id: "+ti);
-		//console.log(tt);
-		//console.log("#h-"+ti+" i");
 
 		$("#h-"+ti+" i").html("<i>"+tt+"</i>");
 	}
@@ -128,28 +126,36 @@ $(document).ready(function(){
 		}
 	}
 
-	function allElapsedTime(){
-		/*var obtainDiff = {
-			'task_time':{
-				'task_id': taskId
+	function createNoProject(name){
+		var noProject = {
+			'project':{
+				'name': name
 			}
 		}
 
-		var timeDiff;
-
 		$.ajax({
-			url: '/diff',
-			data: obtainDiff,
-			type: "GET",
+			type: "POST",
+			url: '/newp',
+			data: noProject,
+			async: false,
 			dataType: "JSON",
 			success: function(data){
-				console.log("Trajo la diferencia");
-				console.log(data);
+				console.log("no_project creado");
+				getProjectId(data);
 			},
 			error: function(jqXHR, textStatus, errorMessage){
-				console.log("Hubo errores en el proceso: "+errorMessage);	
+				console.log("Hubo errores en el proceso: "+errorMessage);
 			}
-		});*/
+		});
+	}
+
+	function getProjectId(data){
+		for (var key in data){
+			projectForTask = data[key].id;
+			//console.info(projectForTask);
+		}
+
+		//return projectForTask
 	}
 
 	var getTime = function(){
