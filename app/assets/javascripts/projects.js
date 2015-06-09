@@ -67,7 +67,7 @@ $(document).ready(function(){
 		var name, id;
 		var html ="";	
 		for (var key in list){
-			console.log(list[key]);
+			//console.log(list[key]);
 			id = list[key].id;
 			name = list[key].name;
 			html += "<option value="+id+">"+name+"</option>";

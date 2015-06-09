@@ -27,7 +27,9 @@ $(document).ready(function(){
 			taskDescription = $("#timerInput").val();
 		}
 
-		projectForTask = $("#projectList").val();
+		projectForTask = $("select option:selected").val();
+
+		console.log(projectForTask);
 
 		var data = {
 			'task':{
