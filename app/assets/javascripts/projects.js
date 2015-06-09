@@ -2,8 +2,6 @@ $(document).ready(function(){
 
 	var name, data;
 	var create = false;
-
-	//var myProjects;
 	
 	loadUserProjects();
 	
@@ -52,10 +50,7 @@ $(document).ready(function(){
 			dataType: "JSON",
 			success: function(data){
 				console.log("Los proyectos");
-				//myProjects = data;
 				drawProjectSelect(data);
-				//var size = Object.size(myProjects);
-				//console.log(size);
 			},
 			error: function(jqXHR, textStatus, errorMessage){
 				console.log("Hubo errores en el proceso: "+errorMessage);
@@ -64,8 +59,9 @@ $(document).ready(function(){
 	}
 
 	function drawProjectSelect(list){
+		$("#projectLIst").html("");
 		var name, id;
-		var html ="";	
+		var html ="<option value=no>Sin proyecto</option>";	
 		for (var key in list){
 			//console.log(list[key]);
 			id = list[key].id;
@@ -75,13 +71,5 @@ $(document).ready(function(){
 
 		$("#projectLIst").append(html);
 	}
-
-	Object.size = function(obj) {
-	    var size = 0, key;
-	    for (key in obj) {
-	        if (obj.hasOwnProperty(key)) size++;
-	    }
-	    return size;
-	};
 
 });

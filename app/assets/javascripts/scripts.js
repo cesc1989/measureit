@@ -152,13 +152,10 @@ $(document).ready(function(){
 	function getProjectId(data){
 		for (var key in data){
 			projectForTask = data[key].id;
-			//console.info(projectForTask);
 		}
-
-		//return projectForTask
 	}
 
-	var getTime = function(){
+	function getTime(){
 		var currentDate = new Date();
 		var day = currentDate.getDate();
 		var month = (currentDate.getMonth()+1);
