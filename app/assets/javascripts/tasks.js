@@ -8,7 +8,7 @@ $(document).ready(function(){
 		dataType: "JSON",
 		success: function(data){
 			console.log("Todas las actividades");
-			console.log(data);
+			//console.log(data);
 			drawTasks(data);
 		},
 		error: function(jqXHR, textStatus, errorMessage){

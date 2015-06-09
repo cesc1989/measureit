@@ -18,6 +18,15 @@ class ProjectsController < ApplicationController
 		if @project.save
 			render json: {'create' => @project.as_json}
 		end
+	end
+
+	def user_projects
+		@userprojects = Project.where(user_id: current_user.id)
+
+		if @userprojects
+			#render json: {'projects' => @userprojects.as_json}
+			render json: @userprojects
+		end
 
 	end
 

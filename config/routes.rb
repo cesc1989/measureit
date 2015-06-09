@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
 	match '/newp', to: 'projects#new_project', via: :post
 
+	get '/userp', to: 'projects#user_projects'
+
 	#match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 end
