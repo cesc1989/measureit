@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
+	devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+
 	resources :projects do
 		resources :tasks
 	end
@@ -14,5 +15,7 @@ Rails.application.routes.draw do
 	match '/stop', to: 'task_times#save_task_time', via: :post
 
 	match '/diff', to: 'task_times#calculate_diff', via: :get
+
+	#match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 end
