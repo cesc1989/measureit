@@ -1,10 +1,22 @@
 <h1>Todas las Tareas</h1>
 <span><%= link_to 'cerrar sesión', destroy_user_session_path, method: :delete %></span>
 
+<div class="projects">
+	<div class="projectForm">
+		<label for="projectInput">Crear un proyecto</label>
+		<input type="text" id="projectInput">
+		<button id="createProjectButton">Crear proyecto</button>
+	</div>
+	<div class="error"></div>
+</div>
+
 <div id="timerForm">
 	<label for="timerInput">Tarea</label>
 	<input id="timerInput" type="text">
 	<label id="minutes">00</label>:<label id="seconds">00</label>
+	<select id="projectLIst">
+		<option value="no">no project</option>
+	</select>
 	<button id="startTimer">Iniciar</button>
 	<button id="stopTimer">Detener</button>
 </div>

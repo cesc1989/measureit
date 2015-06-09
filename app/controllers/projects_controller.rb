@@ -10,8 +10,20 @@ class ProjectsController < ApplicationController
 		@project = Project.new
 	end
 
+	def new_project
+		@project = Project.new
+		@project = Project.create(project_params)
+		@project.user_id = current_user.id
+
+		if @project.save
+			render json: {'create' => @project.as_json}
+		end
+
+	end
+
 	def create
 		@project = Project.create(project_params)
+		@project.user_id = current_user.id
 
 		respond_to do |format|
 			if @project.save
@@ -27,6 +39,10 @@ class ProjectsController < ApplicationController
 	end
 
 	private
+		def set_user
+			@user = current_user.id
+		end
+
 		def project_params
 			params.require(:project).permit(:name)
 		end

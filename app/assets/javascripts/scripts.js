@@ -14,12 +14,12 @@ $(document).ready(function(){
     var secondsLabel = document.getElementById("seconds");
     var totalSeconds = 0;
 
+    var createTaskUrl = "/start";
+	var taskDescription, projectForTask;
+
 	$("#startTimer").click(function(){
 
         timer = setInterval(setTime, 1000);
-
-		var createTaskUrl = "/start";
-		var taskDescription;
 
 		if ($("#timerInput").val() == ""){
 			taskDescription = "no description";
@@ -27,10 +27,12 @@ $(document).ready(function(){
 			taskDescription = $("#timerInput").val();
 		}
 
+		projectForTask = $("#projectList").val();
+
 		var data = {
 			'task':{
 				'description': taskDescription,
-				'project_id': 1	
+				'project_id': 	projectForTask
 			}	
 		}
 

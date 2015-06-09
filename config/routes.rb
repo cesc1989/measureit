@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
 	match '/diff', to: 'task_times#calculate_diff', via: :get
 
+	match '/newp', to: 'projects#new_project', via: :post
+
 	#match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 end
