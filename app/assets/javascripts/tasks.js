@@ -25,7 +25,7 @@ $(document).ready(function(){
 			taskTimes = data[key].timediff;
 			taskId = data[key].id;
 
-			taskTimes = moment(taskTimes).format("mm:ss");
+			taskTimes = moment(taskTimes).format("HH:mm:ss");
 
 			html += "<p>"+taskDescription;
 			html +=" - <span id=h-"+taskId+"><i>"+taskTimes+"</i></span>";
@@ -144,7 +144,7 @@ $(document).ready(function(){
 		et = moment(et).format("YYYY-MM-DD HH:mm:ss");
 		st = moment(st).format("YYYY-MM-DD HH:mm:ss");
 		tt = moment(et).diff(st);
-		tt = moment(tt).format("mm:ss");
+		tt = moment(tt).format("HH:mm:ss");
 
 		$("#h-"+ti+" i").html("<i>"+tt+"</i>");
 	}

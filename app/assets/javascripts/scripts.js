@@ -110,7 +110,7 @@ $(document).ready(function(){
 		et = moment(et).format("YYYY-MM-DD HH:mm:ss");
 		st = moment(st).format("YYYY-MM-DD HH:mm:ss");
 		tt = moment(et).diff(st);
-		tt = moment(tt).format("mm:ss");
+		tt = moment(tt).format("HH:mm:ss");
 
 		$("#h-"+ti+" i").html("<i>"+tt+"</i>");
 	}
