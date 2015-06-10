@@ -33,7 +33,7 @@ $(document).ready(function(){
 			projectForTask = $("select option:selected").val();
 		}
 
-		console.log(projectForTask);
+		//console.log(projectForTask);
 
 		var data = {
 			'task':{

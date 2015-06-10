@@ -8,6 +8,32 @@
 		<button id="createProjectButton">Crear proyecto</button>
 	</div>
 	<div class="error"></div>
+	<br>
+	<div class="manual">
+		<h3>Agregar manualmente</h3>
+		<input type="text" id="taskName" placeholder="nombre de la tarea">
+		<br>
+		<div>
+			<h5>Inicio</h5>
+			<label for="startDateHrs">Horas</label>
+			<input type="text" pattern="\d+" id="startDateHrs" placeholder="00" size="2" maxlength="2">
+			<label for="startDateMits">Minutos</label>
+			<input type="text" pattern="\d+" id="startDateMits" placeholder="00" size="2" maxlength="2">
+			<label for="startDateSecs">Segundos</label>
+			<input type="text" pattern="\d+" id="startDateSecs" placeholder="00" size="2" maxlength="2">
+		</div>
+		<div>
+			<h5>Fin</h5>
+			<label for="endDateHrs">Horas</label>
+			<input type="text" pattern="\d+" id="endDateHrs" placeholder="00" size="2" maxlength="2">
+			<label for="endDateMits">Minutos</label>
+			<input type="text" pattern="\d+" id="endDateMits" placeholder="00" size="2" maxlength="2">
+			<label for="endDateSecs">Segundos</label>
+			<input type="text" pattern="\d+" id="endDateSecs" placeholder="00" size="2" maxlength="2">
+		</div>
+		<br>
+		<button id="manualTask">Crear</button>
+	</div>
 </div>
 
 <div id="timerForm">
