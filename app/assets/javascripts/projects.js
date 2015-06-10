@@ -94,7 +94,7 @@ $(document).ready(function(){
 			name = list[key].name;
 			html += "<option value="+id+">"+name+"</option>";
 		}
-		$("#projectLIst").append(html);
+		$(".projectLIst").append(html);
 	}
 
 	function showProjectTasks(data){

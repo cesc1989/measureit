@@ -39,7 +39,7 @@ $(document).ready(function(){
 	var dateStartString = "2015-06-09 ";
 	var sdh, sdm, sds, edh, edm, eds;
 	var dateEndString = "2015-06-10 ";
-	var manualTaskId, manualTaskName;
+	var manualTaskId, manualTaskName, manualProjectId;
 	var taskId, keepTaskDescription;
 
 	$("#manualTask").click(function(){
@@ -50,10 +50,12 @@ $(document).ready(function(){
 			manualTaskName = $("#taskName").val();
 		}
 
+		manualProjectId = $(".manual select option:selected").val();
+
 		var taskData = {
 			'task':{
 				'description': manualTaskName,
-				'project_id': 18
+				'project_id': manualProjectId
 			}
 		}
 

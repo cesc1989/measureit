@@ -11,8 +11,11 @@
 	<br>
 	<div class="manual">
 		<h3>Agregar manualmente</h3>
+		<label for="taskName">Nombre de la tarea</label>
 		<input type="text" id="taskName" placeholder="nombre de la tarea">
 		<br>
+		<label for="projectList">Escoge el proyecto</label>
+		<select class="projectLIst"></select>
 		<div>
 			<h5>Inicio</h5>
 			<label for="startDateHrs">Horas</label>
@@ -40,8 +43,7 @@
 	<label for="timerInput">Tarea</label>
 	<input id="timerInput" type="text">
 	<label id="minutes">00</label>:<label id="seconds">00</label>
-	<select id="projectLIst">
-	</select>
+	<select class="projectLIst"></select>
 	<button id="startTimer">Iniciar</button>
 	<button id="stopTimer">Detener</button>
 </div>
