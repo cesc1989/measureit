@@ -4,4 +4,7 @@
 
 <% @projects.each do |project| %>
 	<p><button class="getData" id="<%= project.id %>"><%= "Ver las tareas de #{project.name}"%></button> </p>
+	<div id="projectTask-<%= project.id %>">
+		<p><span></span> | <i></i></p>
+	</div>
 <% end %>

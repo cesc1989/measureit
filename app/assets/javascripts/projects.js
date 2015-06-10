@@ -45,8 +45,6 @@ $(document).ready(function(){
 
 	$(".getData").click(function(event){
 
-		event.preventDefault();
-
 		var id = $(this).attr('id');
 
 		var data = {
@@ -55,8 +53,6 @@ $(document).ready(function(){
 			}
 		}
 
-		console.log(data);
-
 		$.ajax({
 			type: "GET",
 			url: '/projectstimes',
@@ -64,15 +60,13 @@ $(document).ready(function(){
 			dataType: "JSON",
 			success: function(data){
 				console.log("Tareas del proyecto");
-				console.log(data);
-				//loadUserProjects();
+				//console.log(data);
+				showProjectTasks(data);
 			},
 			error: function(jqXHR, textStatus, errorMessage){
 				console.log("Hubo errores en el proceso: "+errorMessage);
 			}
 		});
-		
-	
 	});
 
 	function loadUserProjects(){
@@ -100,8 +94,21 @@ $(document).ready(function(){
 			name = list[key].name;
 			html += "<option value="+id+">"+name+"</option>";
 		}
-
 		$("#projectLIst").append(html);
+	}
+
+	function showProjectTasks(data){
+		var html = "", description, td, id;
+		for (var key in data){
+			//console.log(data[key].description+data[key].timediff);
+			id = data[key].pid;
+			description = data[key].description;
+			td = data[key].timediff;
+			td = moment(td).format('mm:ss');
+			html += "<p><span>"+description+"</span> | <i>"+td+"</i></p>";
+		}
+
+		$("#projectTask-"+id).html(html);
 	}
 
 });
