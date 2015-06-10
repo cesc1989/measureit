@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 	before_filter :load_project, only: [:show]
 
 	def index
-		@projects = Project.all
+		@projects = Project.where(user_id: current_user.id).order(created_at: :desc)
 	end
 
 	def new
@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
 		@userprojects = Project.where(user_id: current_user.id)
 
 		if @userprojects
-			#render json: {'projects' => @userprojects.as_json}
 			render json: @userprojects
 		end
 
@@ -44,7 +43,13 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project_tasks = Task.where(project_id: @project.id)
+		#@project_tasks = Task.where(project_id: @project.id)
+	end
+
+	def show_projects_times
+		@project = project_params[:id]
+		@project_and_tasks = Project.project_and_times(current_user.id, @project)
+		render json: @project_and_tasks
 	end
 
 	private
@@ -53,7 +58,7 @@ class ProjectsController < ApplicationController
 		end
 
 		def project_params
-			params.require(:project).permit(:name)
+			params.require(:project).permit(:name, :id)
 		end
 
 		def load_project

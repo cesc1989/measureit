@@ -1,7 +1,7 @@
-<h1>Hola</h1>
+<h1>Mis Proyectos</h1>
 
-<%= link_to 'Nuevo proyecto', new_project_path %>
+<%#link_to 'Nuevo proyecto', new_project_path %>
 
 <% @projects.each do |project| %>
-	<p><%= link_to project.name, project %> - <%= link_to 'Nueva tarea', new_project_task_path(project) %></p>
+	<p><button class="getData" id="<%= project.id %>"><%= "Ver las tareas de #{project.name}"%></button> </p>
 <% end %>

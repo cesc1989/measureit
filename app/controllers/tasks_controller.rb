@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 	before_filter :load_project, only: [:show, :new]
 
 	def index
-		#@tasks = Task.order(created_at: :desc)
+		
 	end
 
 	def tareas

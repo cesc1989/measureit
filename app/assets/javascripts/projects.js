@@ -43,6 +43,38 @@ $(document).ready(function(){
 	
 	});
 
+	$(".getData").click(function(event){
+
+		event.preventDefault();
+
+		var id = $(this).attr('id');
+
+		var data = {
+			'project':{
+				'id': id
+			}
+		}
+
+		console.log(data);
+
+		$.ajax({
+			type: "GET",
+			url: '/projectstimes',
+			data: data,
+			dataType: "JSON",
+			success: function(data){
+				console.log("Tareas del proyecto");
+				console.log(data);
+				//loadUserProjects();
+			},
+			error: function(jqXHR, textStatus, errorMessage){
+				console.log("Hubo errores en el proceso: "+errorMessage);
+			}
+		});
+		
+	
+	});
+
 	function loadUserProjects(){
 		$.ajax({
 			type: "GET",
