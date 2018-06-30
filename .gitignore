@@ -16,5 +16,3 @@
 /tmp
 
 .vagrant/
-Vagrantfile
-install_software.sh
