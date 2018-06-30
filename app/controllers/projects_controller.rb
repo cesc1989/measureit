@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
 	before_filter :load_project, only: [:show]
 
 	def index
@@ -53,16 +52,16 @@ class ProjectsController < ApplicationController
 	end
 
 	private
-		def set_user
-			@user = current_user.id
-		end
 
-		def project_params
-			params.require(:project).permit(:name, :id)
-		end
+	def set_user
+		@user = current_user.id
+	end
 
-		def load_project
-			@project = Project.find(params[:id])
-		end
+	def project_params
+		params.require(:project).permit(:name, :id)
+	end
 
+	def load_project
+		@project = Project.find(params[:id])
+	end
 end

@@ -1,10 +1,8 @@
 class TasksController < ApplicationController
-
 	before_action :authenticate_user!, only: [:index, :create, :tareas]
 	before_filter :load_project, only: [:show, :new]
 
 	def index
-		
 	end
 
 	def tareas
@@ -26,17 +24,15 @@ class TasksController < ApplicationController
 	end
 
 	def show
-		
 	end
 
 	private
 
-		def load_project
-			@project = Project.find(params[:project_id])
-		end
+	def load_project
+		@project = Project.find(params[:project_id])
+	end
 
-		def task_params
-			params.require(:task).permit(:description, :project_id)
-		end
-
+	def task_params
+		params.require(:task).permit(:description, :project_id)
+	end
 end
