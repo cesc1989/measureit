@@ -25,7 +25,6 @@ class ProjectsController < ApplicationController
 		if @userprojects
 			render json: @userprojects
 		end
-
 	end
 
 	def create
