@@ -1,3 +1,3 @@
-#Measure It
+# Measure It
 
-Lleva el registro de tiempo de tus actividades.
+This is a learning project for time tracking activities.
