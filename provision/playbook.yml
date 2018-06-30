@@ -1,0 +1,12 @@
+---
+- hosts: all
+  roles:
+    - ubuntu_packages
+    - vagrant
+    - ruby
+    - customize_git
+    - nodejs
+    - role: mysql
+      become: True
+
+...
