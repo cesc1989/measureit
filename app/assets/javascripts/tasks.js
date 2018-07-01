@@ -1,36 +1,34 @@
-$(document).ready(function(){
-
+$(document).ready(function() {
 	var taskUrl = "/t";
 
 	$.ajax({
 		type: "GET",
 		url: taskUrl,
 		dataType: "JSON",
-		success: function(data){
-			console.log("Todas las actividades");
-			//console.log(data);
+		success: function(data) {
 			drawTasks(data);
 		},
-		error: function(jqXHR, textStatus, errorMessage){
-			console.log("Hubo errores en el proceso: "+errorMessage);
+		error: function(jqXHR, textStatus, errorMessage) {
+			console.log("Hubo errores en el proceso: " + errorMessage);
 		}
 	});
 
-	function drawTasks(data){
+	function drawTasks(data) {
 		var taskDescription, taskId, taskTimes;
 		var html = "";
 
-		for (var key in data){
+		for (var key in data) {
 			taskDescription = data[key].description;
 			taskTimes = data[key].timediff;
 			taskId = data[key].id;
 
 			taskTimes = moment(taskTimes).format("HH:mm:ss");
 
-			html += "<p>"+taskDescription;
-			html +=" - <span id=h-"+taskId+"><i>"+taskTimes+"</i></span>";
+			html += "<p>" + taskDescription;
+			html +=" - <span id=h-" + taskId + "><i>" + taskTimes + "</i></span>";
 			html += "</p>"
 		}
+
 		$("#tasksList").html(html);
 	}
 
@@ -42,18 +40,17 @@ $(document).ready(function(){
 	var manualTaskId, manualTaskName, manualProjectId;
 	var taskId, keepTaskDescription;
 
-	$("#manualTask").click(function(){
-
-		if ($("#taskName").val() == ""){
+	$("#manualTask").click(function() {
+		if ($("#taskName").val() == "") {
 			manualTaskName = "no description manual";
-		}else{
+		} else {
 			manualTaskName = $("#taskName").val();
 		}
 
 		manualProjectId = $(".manual select option:selected").val();
 
 		var taskData = {
-			'task':{
+			'task': {
 				'description': manualTaskName,
 				'project_id': manualProjectId
 			}
@@ -65,13 +62,11 @@ $(document).ready(function(){
 			data: taskData,
 			async: false,
 			dataType: "JSON",
-			success: function(data){
-				console.log("Tarea manual creada");
-				//console.log(data);
+			success: function(data) {
 				getTaskId(data);
 			},
-			error: function(jqXHR, textStatus, errorMessage){
-				console.log("Hubo errores en el proceso: "+errorMessage);
+			error: function(jqXHR, textStatus, errorMessage) {
+				console.log("Hubo errores en el proceso: " + errorMessage);
 			}
 		});
 
@@ -82,7 +77,7 @@ $(document).ready(function(){
 		sdm = $("#startDateMits").val();
 		sds = $("#startDateSecs").val();
 
-		it = sdh+":"+sdm+":"+sds;
+		it = sdh + ":" + sdm + ":" +sds;
 		dateStartString += it;
 		console.log(dateStartString);
 
@@ -91,13 +86,13 @@ $(document).ready(function(){
 		edm = $("#endDateMits").val();
 		eds = $("#endDateSecs").val();
 
-		et = edh+":"+edm+":"+eds;
+		et = edh + ":" + edm + ":" +eds;
 		dateEndString += et;
 		console.log(dateEndString);
 
 		// Vamos a crear la task_times
 		var timeData = {
-			'task_time':{
+			'task_time': {
 				'start_time': it,
 				'end_time': et,
 				'task_id': taskId
@@ -109,33 +104,31 @@ $(document).ready(function(){
 			url: "/stop",
 			data: timeData,
 			dataType: "JSON",
-			success: function(data){
-				console.log("Stop el pollo");
-				//console.log(data);
+			success: function(data) {
 				drawTask(keepTaskDescription);
 				getElapsedTime(data);
 			},
-			error: function(jqXHR, textStatus, errorMessage){
-				console.log("Hubo errores en el proceso: "+errorMessage);
+			error: function(jqXHR, textStatus, errorMessage) {
+				console.log("Hubo errores en el proceso: " + errorMessage);
 			}
 		});
-
 	});
 
-	function getTaskId(data){
+	function getTaskId(data) {
 		for(var key in data){
 			taskId = data[key].id;
 			keepTaskDescription = data[key].description;
 		}
 	}
 
-	function drawTask(td){
-		$("#tasksList").prepend("<p>"+td+" - <span id=h-"+taskId+"><i></i></span></p>");
+	function drawTask(td) {
+		$("#tasksList").prepend("<p>" + td + " - <span id=h-" + taskId + "><i></i></span></p>");
 	}
 
-	function getElapsedTime(data){
+	function getElapsedTime(data) {
 		var st, et, tt, ti;
-		for (key in data){
+
+		for (key in data) {
 			st = data[key].start_time;
 			et = data[key].end_time;
 			ti = data[key].task_id;
@@ -146,7 +139,6 @@ $(document).ready(function(){
 		tt = moment(et).diff(st);
 		tt = moment(tt).format("HH:mm:ss");
 
-		$("#h-"+ti+" i").html("<i>"+tt+"</i>");
+		$("#h-" + ti + " i").html("<i>" + tt + "</i>");
 	}
-
 });

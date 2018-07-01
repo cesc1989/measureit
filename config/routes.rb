@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 	post '/start', to: 'tasks#create'
 	post '/stop', to: 'task_times#save_task_time'
 	get '/diff', to: 'task_times#calculate_diff'
-	post '/newp', to: 'projects#new_project'
-	get '/userp', to: 'projects#user_projects'
-	get '/projectstimes', to: 'projects#show_projects_times'
+	post '/new_project', to: 'projects#new_project'
+	get '/user_projects', to: 'projects#user_projects'
+	get '/projects_times', to: 'projects#show_projects_times'
 end
