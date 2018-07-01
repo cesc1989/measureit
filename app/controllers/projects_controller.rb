@@ -10,12 +10,11 @@ class ProjectsController < ApplicationController
 	end
 
 	def new_project
-		@project = Project.new
-		@project = Project.create(project_params)
+		@project = Project.new(project_params)
 		@project.user_id = current_user.id
 
 		if @project.save
-			render json: {'create' => @project.as_json}
+			render json: { create: @project.as_json }
 		end
 	end
 

@@ -1,9 +1,12 @@
 <h1>Mis Proyectos</h1>
 
-<%#link_to 'Nuevo proyecto', new_project_path %>
-
 <% @projects.each do |project| %>
-	<p><button class="getData" id="<%= project.id %>"><%= "Ver las tareas de #{project.name}"%></button> </p>
+	<p>
+    <button class="getData" id="<%= project.id %>">
+      <%= "Ver las tareas de #{project.name}"%>
+    </button>
+  </p>
+
 	<div id="projectTask-<%= project.id %>">
 		<p><span></span> | <i></i></p>
 	</div>
