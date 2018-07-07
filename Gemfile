@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'sentry-raven'
+gem 'puma'
 
 gem 'spring', group: :development
 
