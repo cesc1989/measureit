@@ -8,6 +8,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-gem 'sentry-raven'
+# gem 'sentry-raven'
 
 gem 'spring', group: :development
