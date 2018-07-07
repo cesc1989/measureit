@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '4.2'
+gem 'mysql', '2.9.1'
 gem 'mysql2', '~> 0.3.17'
 gem 'devise'
 gem 'sass-rails', '~> 4.0.3'

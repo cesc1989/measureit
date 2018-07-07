@@ -75,6 +75,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
+    mysql (2.9.1)
     mysql2 (0.3.21)
     nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
@@ -150,6 +151,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   jquery-rails
+  mysql (= 2.9.1)
   mysql2 (~> 0.3.17)
   puma
   rails (= 4.2)
