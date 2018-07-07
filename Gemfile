@@ -11,3 +11,5 @@ gem 'turbolinks'
 # gem 'sentry-raven'
 
 gem 'spring', group: :development
+
+gem 'dotenv-rails', groups: [:development, :test]
