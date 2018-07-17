@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
   has_many :task_times
 
   def self.task_with_times(id)
-  	Task.find_by_sql("
+    Task.find_by_sql("
       SELECT tasks.id,description,
              task_times.id,
              task_times.id AS ttid,
