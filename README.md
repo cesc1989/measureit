@@ -1,6 +1,6 @@
 # Measure It
 
-This is a learning project for time tracking activities.
+This is a test project that time tracks activities alone or in a given project.
 
 ## Provisioning
 
@@ -17,8 +17,14 @@ After installing Vagrant, VirtualBox and Ansible just run:
 $ vagrant up
 ```
 
-Wait to the process to complete and then load the schema with:
+Wait for the process to complete and then load the schema with:
 
 ```bash
 $ rake db:schema:load
+```
+
+Run local server with foreman
+
+```bash
+$ foreman start -f Procfile.dev
 ```

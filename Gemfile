@@ -13,6 +13,9 @@ gem 'turbolinks'
 gem 'sentry-raven'
 gem 'puma'
 
-gem 'spring', group: :development
-
-gem 'dotenv-rails', groups: [:development, :test]
+group :development do
+  gem 'spring'
+  gem 'foreman'
+  gem 'dotenv-rails'
+  gem 'rubocop', '0.58.1', require: false
+end
